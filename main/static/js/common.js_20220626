@@ -1,0 +1,53 @@
+window.addEventListener('load', (event) => {
+	console.log("Onload is worked!!");
+	let data = {
+		title: "たいとる００１",
+		description: "せつめい００１"
+	};
+
+	const tileNode = document.createElement('div');
+	tileNode.setAttribute('class', 'single_tile');
+	const titleNode = document.createElement('p');
+	titleNode.setAttribute('class', 'tile_title');
+	titleNode.appendChild(document.createTextNode(data.title));
+	const mainNode = document.createElement('p');
+	mainNode.setAttribute('class', 'tile_main');
+	mainNode.appendChild(document.createTextNode(data.description));
+	
+	tileNode.appendChild(titleNode);
+	tileNode.appendChild(mainNode);
+
+	tileNode.style.top = '90px';
+	tileNode.style.left = '160px';
+	
+	document.getElementsByClassName('main').item(0).appendChild(tileNode);
+
+});
+let dragNode;
+document.addEventListener('mousedown', (event) => {
+	console.log("ドラッグ開始");
+	//ドラッグした要素を変数に格納
+	dragNode = event.target;
+	console.log(dragNode);
+	
+	//この位置まで移動
+	function moveAt(x, y) {
+		dragNode.style.top = y + "px";
+		dragNode.style.left = x + "px";
+	}
+
+	//mousemoveしてる時の処理
+	function onMouseMove(event) {
+		moveAt(event.clientX-80, event.clientY-45);
+	}
+
+	dragNode.addEventListener('mousemove', onMouseMove);
+
+	//マウスボタンを話した時の処理
+	dragNode.addEventListener('mouseup', () => {
+		dragNode.removeEventListener('mousemove', onMouseMove);
+		dragNode.onmouseup = null;
+	});
+
+});
+

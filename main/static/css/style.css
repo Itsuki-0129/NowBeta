@@ -1,0 +1,25 @@
+.main {
+	width: 600px;
+	height: 900px;
+	position: relative;
+	user-select: none;
+	background: lightblue;
+}
+
+.single_tile {
+	position: absolute;
+	background: #000;
+	width: 160px;
+	height: 90px;
+	border-radius: 10px;
+}
+
+.tile_title {
+	color: #fff;
+	margin: 10px;
+}
+
+.tile_main {
+	color: #fff;
+	margin: 10px;
+}
